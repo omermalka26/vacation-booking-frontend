@@ -1,7 +1,9 @@
 // api.js - פונקציות API לתקשורת עם השרת
 // For production, change this to your backend URL:
-// const API_BASE_URL = 'https://your-backend-url.com';
-const API_BASE_URL = 'http://localhost:5000';
+// const API_BASE_URL = 'https://your-backend-url.onrender.com';
+// const API_BASE_URL = 'https://your-backend-url.railway.app';
+// const API_BASE_URL = 'https://your-backend-url.herokuapp.com';
+const API_BASE_URL = 'https://vacation-booking-backend.onrender.com';
 
 // פונקציה עזר לשליחת בקשות
 const apiRequest = async (endpoint, options = {}) => {
