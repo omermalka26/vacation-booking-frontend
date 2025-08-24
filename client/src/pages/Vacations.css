@@ -1,0 +1,402 @@
+.vacations-container {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.vacations-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.vacations-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vacations-header p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.add-vacation-btn {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+}
+
+.add-vacation-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: #666;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1e3c72;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  text-align: center;
+  padding: 3rem;
+  color: #e74c3c;
+}
+
+.retry-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #c0392b;
+}
+
+.no-vacations {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.vacations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.vacation-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vacation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.vacation-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.vacation-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.vacation-card:hover .vacation-image img {
+  transform: scale(1.05);
+}
+
+.vacation-content {
+  padding: 1.5rem;
+}
+
+.vacation-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 1.4em;
+  cursor: help;
+  position: relative;
+}
+
+.vacation-title:hover {
+  overflow: visible;
+  white-space: normal;
+  height: auto;
+  background: white;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: -0.5rem;
+  position: absolute;
+  min-width: 100%;
+}
+
+.vacation-details {
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #333;
+  font-weight: 500;
+}
+
+.detail-value.price {
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.detail-value.country {
+  color: #3498db;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.vacation-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.like-btn {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.like-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(30, 60, 114, 0.4);
+}
+
+.like-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.like-btn.liked {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.like-btn.liked:hover:not(:disabled) {
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.login-required {
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.edit-btn, .delete-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+}
+
+.edit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.likes-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 25px;
+  border: 2px solid #e9ecef;
+  min-width: 80px;
+}
+
+.likes-icon {
+  font-size: 1.2rem;
+}
+
+.likes-count {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .vacations-container {
+    padding: 1rem;
+  }
+  
+  .vacations-header h1 {
+    font-size: 2rem;
+  }
+  
+  .vacations-header p {
+    font-size: 1rem;
+  }
+  
+  .vacations-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .vacation-card {
+    margin: 0 0.5rem;
+  }
+  
+  .vacation-content {
+    padding: 1rem;
+  }
+  
+  .vacation-title {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.4em;
+    cursor: help;
+    position: relative;
+  }
+  
+  .vacation-title:hover {
+    overflow: visible;
+    white-space: normal;
+    height: auto;
+    background: white;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: -0.5rem;
+    position: absolute;
+    min-width: 100%;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .vacation-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .like-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .likes-display {
+    padding: 0.5rem 1rem;
+    min-width: 60px;
+  }
+  
+  .likes-count {
+    font-size: 1rem;
+  }
+  
+  .likes-icon {
+    font-size: 1rem;
+  }
+}
