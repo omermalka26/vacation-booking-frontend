@@ -1,200 +1,150 @@
-# 🏖️ Vacation Booking System
+# Vacation Booking System - Frontend
 
-A full-stack web application for booking vacation packages, built with Flask (Backend) and React (Frontend).
+A modern React-based frontend for a vacation booking system with user authentication, admin dashboard, and responsive design.
 
-## 🌟 Features
+## 🚀 Features
 
-### For Users:
-- **User Registration & Authentication** - Secure JWT-based authentication
-- **Browse Vacations** - View available vacation packages with images and details
-- **Like/Unlike Vacations** - Express interest in vacation packages
-- **Responsive Design** - Works perfectly on desktop and mobile devices
-
-### For Administrators:
-- **Admin Dashboard** - Manage all vacation packages
-- **Add New Vacations** - Create new vacation packages with images
-- **Edit Vacations** - Update existing vacation details
-- **Delete Vacations** - Remove vacation packages
-- **View Statistics** - See total and active vacations count
+- **User Authentication**: Login/Register with JWT tokens
+- **Vacation Browsing**: View all available vacations with images
+- **Like System**: Users can like/unlike vacations
+- **Admin Dashboard**: Full CRUD operations for vacations
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Modern UI**: Ocean blue theme with glassmorphism effects
 
 ## 🛠️ Tech Stack
 
-### Backend (Flask):
-- **Flask** - Web framework
-- **SQLite** - Database
-- **PyJWT** - JWT authentication
-- **Flask-CORS** - Cross-origin resource sharing
-- **Werkzeug** - Password hashing and file handling
-- **Pillow** - Image processing
-
-### Frontend (React):
-- **React 18** - UI library
-- **React Router** - Client-side routing
-- **Context API** - State management
-- **CSS3** - Styling with modern features
-- **Fetch API** - HTTP requests
+- **Frontend**: React 18, React Router, Context API
+- **Styling**: CSS3 with modern design patterns
+- **HTTP Client**: Fetch API
+- **State Management**: React Context API
 
 ## 📁 Project Structure
 
 ```
-Project Pt2/
-├── client/                 # React Frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── components/     # Reusable components
-│   │   ├── contexts/       # React contexts
-│   │   ├── pages/          # Page components
-│   │   ├── api/           # API service
-│   │   └── App.js         # Main app component
-│   ├── package.json
-│   └── README.md
-└── Project/               # Flask Backend
-    ├── controllers/       # Business logic
-    ├── models/           # Database models
-    ├── routes/           # API endpoints
-    ├── decorators/       # Authentication decorators
-    ├── images/           # Vacation images
-    ├── app.py           # Main Flask app
-    ├── requirements.txt  # Python dependencies
-    └── projectdb.db     # SQLite database
+client/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.js
+│   │   └── ProtectedRoute.js
+│   ├── context/
+│   │   └── UserContext.js
+│   ├── pages/
+│   │   ├── Login.js
+│   │   ├── Register.js
+│   │   ├── Vacations.js
+│   │   ├── Admin.js
+│   │   ├── AddVacation.js
+│   │   └── EditVacation.js
+│   ├── api/
+│   │   └── api.js
+│   ├── App.js
+│   └── index.js
+└── package.json
 ```
 
 ## 🚀 Installation & Setup
 
-### Prerequisites:
-- Python 3.8+
-- Node.js 16+
-- npm or yarn
-
-### Backend Setup:
-1. Navigate to the backend directory:
+1. **Clone the repository**:
    ```bash
-   cd Project
+   git clone <frontend-repo-url>
+   cd vacation-booking-frontend
    ```
 
-2. Create a virtual environment:
+2. **Install dependencies**:
    ```bash
-   python -m venv venv
+   cd client
+   npm install
    ```
 
-3. Activate the virtual environment:
-   - Windows: `venv\Scripts\activate`
-   - macOS/Linux: `source venv/bin/activate`
+3. **Start the development server**:
+   ```bash
+   npm start
+   ```
 
-4. Install dependencies:
+4. **Open your browser** and navigate to `http://localhost:3000`
+
+## 🔗 Backend Repository
+
+This frontend connects to a separate Flask backend API. You'll need to:
+
+1. **Clone the backend repository**:
+   ```bash
+   git clone <backend-repo-url>
+   cd vacation-booking-backend
+   ```
+
+2. **Install Python dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-5. Run the Flask server:
+3. **Start the backend server**:
    ```bash
    python app.py
    ```
 
 The backend will run on `http://localhost:5000`
 
-### Frontend Setup:
-1. Navigate to the client directory:
-   ```bash
-   cd client
-   ```
+## 👤 Authentication
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Default Admin User
+- **Email**: admin@admin.com
+- **Password**: admin123
 
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-The frontend will run on `http://localhost:3000`
-
-## 🔐 Authentication
-
-The application uses JWT (JSON Web Tokens) for authentication:
-
-- **Registration**: Users can create new accounts
-- **Login**: Users authenticate with email and password
-- **Protected Routes**: Admin routes require authentication and admin privileges
-- **Token Storage**: JWT tokens are stored in localStorage
+### Regular User Registration
+Users can register with any email and password.
 
 ## 🎨 UI/UX Features
 
-- **Modern Design**: Clean, responsive interface with ocean blue theme
-- **Interactive Elements**: Hover effects, smooth transitions, and animations
-- **Role-Based UI**: Different interfaces for users and administrators
-- **Loading States**: Proper loading indicators throughout the app
-- **Error Handling**: User-friendly error messages and retry options
+- **Ocean Blue Theme**: Consistent color scheme throughout
+- **Glassmorphism Effects**: Modern transparent cards with blur
+- **Responsive Design**: Adapts to all screen sizes
+- **Interactive Elements**: Hover effects and smooth transitions
+- **Loading States**: User feedback during API calls
 
 ## 📱 Responsive Design
 
 The application is fully responsive and works on:
-- Desktop computers
-- Tablets
-- Mobile phones
+- **Desktop**: Full feature set with optimal layout
+- **Tablet**: Adapted navigation and card layouts
+- **Mobile**: Touch-friendly interface with mobile-optimized navigation
 
-## 🔧 API Endpoints
+## 🔧 Configuration
 
-### Authentication:
-- `POST /register` - User registration
-- `POST /login` - User login
-- `GET /me` - Get current user info
-
-### Vacations:
-- `GET /vacations` - Get all vacations
-- `POST /vacations` - Create new vacation (admin only)
-- `PUT /vacations/:id` - Update vacation (admin only)
-- `DELETE /vacations/:id` - Delete vacation (admin only)
-- `GET /vacations/user-likes` - Get user's liked vacations
-
-### Countries:
-- `GET /countries` - Get all countries
-
-### Likes:
-- `POST /likes` - Add like to vacation
-- `DELETE /likes/:vacation_id` - Remove like from vacation
-
-## 🗄️ Database Schema
-
-### Users Table:
-- `user_id` (Primary Key)
-- `first_name`
-- `last_name`
-- `email`
-- `password_hash`
-- `role_id`
-
-### Vacations Table:
-- `vacation_id` (Primary Key)
-- `vacation_description`
-- `country_id`
-- `vacation_start`
-- `vacation_end`
-- `price`
-- `picture_file_name`
-
-### Countries Table:
-- `country_id` (Primary Key)
-- `country_name`
-
-### Likes Table:
-- `like_id` (Primary Key)
-- `user_id`
-- `vacation_id`
+### API Configuration
+Update the API base URL in `src/api/api.js` if needed:
+```javascript
+const API_BASE_URL = 'http://localhost:5000';
+```
 
 ## 🚀 Deployment
 
-### Backend Deployment:
-1. Set up a production server (e.g., Heroku, DigitalOcean)
-2. Install Python and dependencies
-3. Set environment variables
-4. Run with a production WSGI server (e.g., Gunicorn)
+### Frontend Deployment
+1. Build the production version:
+   ```bash
+   npm run build
+   ```
 
-### Frontend Deployment:
-1. Build the production version: `npm run build`
-2. Deploy the `build` folder to a static hosting service (e.g., Netlify, Vercel)
+2. Deploy the `build` folder to your hosting service (Netlify, Vercel, etc.)
+
+### Backend Deployment
+Deploy the backend to your preferred hosting service (Heroku, Railway, etc.)
+
+## 📝 API Endpoints
+
+The frontend communicates with these backend endpoints:
+
+- `POST /auth/login` - User login
+- `POST /auth/register` - User registration
+- `GET /auth/me` - Get current user
+- `GET /vacations` - Get all vacations
+- `POST /vacations` - Create vacation (admin)
+- `PUT /vacations/:id` - Update vacation (admin)
+- `DELETE /vacations/:id` - Delete vacation (admin)
+- `POST /likes` - Add like
+- `DELETE /likes` - Remove like
+- `GET /countries` - Get all countries
 
 ## 🤝 Contributing
 
@@ -208,10 +158,6 @@ The application is fully responsive and works on:
 
 This project is licensed under the MIT License.
 
-## 👨‍💻 Author
-
-Created as a full-stack development project demonstrating modern web development practices.
-
 ---
 
-**Happy Vacation Booking! 🏖️✈️**
+**Note**: This is the frontend repository. Make sure to also set up the backend repository for full functionality.
