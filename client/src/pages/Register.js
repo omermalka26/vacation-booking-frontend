@@ -66,6 +66,14 @@ const Register = () => {
         [name]: ''
       }));
     }
+    
+    // Clear general error when user starts typing
+    if (errors.general) {
+      setErrors(prev => ({
+        ...prev,
+        general: ''
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -91,10 +99,24 @@ const Register = () => {
       navigate('/vacations');
       
     } catch (error) {
-      if (error.message.includes('email')) {
-        setErrors({ email: 'This email already exists in the system' });
+      // Handle specific error messages from backend
+      if (error.message.includes('already exists')) {
+        setErrors({ email: 'This email address is already registered. Please use a different email or try logging in.' });
+      } else if (error.message.includes('Invalid email format')) {
+        setErrors({ email: 'Please enter a valid email address.' });
+      } else if (error.message.includes('Password must be at least')) {
+        setErrors({ password: error.message });
+      } else if (error.message.includes('First name and last name cannot be empty')) {
+        setErrors({ 
+          first_name: 'First name is required.',
+          last_name: 'Last name is required.'
+        });
+      } else if (error.message.includes('Missing required fields')) {
+        setErrors({ general: 'Please fill in all required fields.' });
+      } else if (error.message.includes('No data provided')) {
+        setErrors({ general: 'Please fill in all required fields.' });
       } else {
-        setErrors({ general: error.message || 'Registration error' });
+        setErrors({ general: error.message || 'Registration failed. Please try again.' });
       }
     } finally {
       setIsLoading(false);

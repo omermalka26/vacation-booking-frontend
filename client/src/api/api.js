@@ -1,4 +1,6 @@
 // api.js - פונקציות API לתקשורת עם השרת
+// For production, change this to your backend URL:
+// const API_BASE_URL = 'https://your-backend-url.com';
 const API_BASE_URL = 'http://localhost:5000';
 
 // פונקציה עזר לשליחת בקשות
@@ -18,8 +20,10 @@ const apiRequest = async (endpoint, options = {}) => {
     const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
     const data = await response.json();
     
+    console.log('API Response:', { status: response.status, data }); // Debug log
+    
     if (!response.ok) {
-      throw new Error(data.message || 'Something went wrong');
+      throw new Error(data.error || data.message || 'Something went wrong');
     }
     
     return data;
@@ -67,7 +71,7 @@ export const vacationAPI = {
     }).then(response => {
       return response.json().then(data => {
         if (!response.ok) {
-          throw new Error(data.message || 'Something went wrong');
+          throw new Error(data.error || data.message || 'Something went wrong');
         }
         return data;
       });
@@ -90,7 +94,7 @@ export const vacationAPI = {
     }).then(response => {
       return response.json().then(data => {
         if (!response.ok) {
-          throw new Error(data.message || 'Something went wrong');
+          throw new Error(data.error || data.message || 'Something went wrong');
         }
         return data;
       });

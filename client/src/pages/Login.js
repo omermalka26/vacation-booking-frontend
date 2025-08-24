@@ -50,6 +50,14 @@ const Login = () => {
         [name]: ''
       }));
     }
+    
+    // Clear general error when user starts typing
+    if (errors.general) {
+      setErrors(prev => ({
+        ...prev,
+        general: ''
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -69,10 +77,23 @@ const Login = () => {
       navigate('/vacations');
       
     } catch (error) {
-      if (error.message.includes('Invalid') || error.message.includes('credentials')) {
-        setErrors({ general: 'Invalid email or password' });
+      console.log('Login error:', error.message); // Debug log
+      
+      // Handle specific error messages from backend
+      if (error.message.includes('Incorrect email or password')) {
+        setErrors({ general: 'Email or password is incorrect. Please try again.' });
+      } else if (error.message.includes('Invalid email format')) {
+        setErrors({ email: 'Please enter a valid email address.' });
+      } else if (error.message.includes('Password must be at least')) {
+        setErrors({ password: error.message });
+      } else if (error.message.includes('Email is required')) {
+        setErrors({ email: 'Email is required.' });
+      } else if (error.message.includes('Password is required')) {
+        setErrors({ password: 'Password is required.' });
+      } else if (error.message.includes('No data provided')) {
+        setErrors({ general: 'Please fill in all required fields.' });
       } else {
-        setErrors({ general: error.message || 'Login error' });
+        setErrors({ general: error.message || 'Login failed. Please try again.' });
       }
     } finally {
       setIsLoading(false);
