@@ -1,14 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
-import { vacationAPI, likeAPI, countryAPI } from '../api/api';
+import { vacationAPI, likeAPI } from '../api/api';
 import './Vacations.css';
 
 const Vacations = () => {
   const navigate = useNavigate();
   const { isAuthenticated, isAdmin, user, loading: userLoading } = useUser();
   const [vacations, setVacations] = useState([]);
-  const [countries, setCountries] = useState({});
+  const [countries, setCountries] = useState({
+    1: "Israel",
+    2: "Italy", 
+    3: "United States",
+    4: "Canada",
+    5: "Spain",
+    6: "China",
+    7: "France",
+    8: "United Kingdom",
+    9: "India",
+    10: "Japan",
+    11: "Germany",
+    12: "Australia",
+    13: "Brazil",
+    14: "Mexico",
+    15: "South Africa",
+    16: "Egypt",
+    17: "Turkey",
+    18: "Greece",
+    19: "Netherlands",
+    20: "Sweden"
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [likedVacations, setLikedVacations] = useState(new Set());
@@ -25,18 +46,10 @@ const Vacations = () => {
       
       // Fetch vacations
       const vacationsResponse = await vacationAPI.getAll();
-      setVacations(vacationsResponse.vacations || vacationsResponse.data || []);
+      const vacationsData = vacationsResponse.vacations || vacationsResponse.data || [];
+      setVacations(vacationsData);
       
-      // Fetch countries
-      const countriesResponse = await countryAPI.getAll();
-      const countriesData = countriesResponse.countries || countriesResponse.data || [];
-      
-      // Convert countries array to object with country_id as key
-      const countriesMap = {};
-      countriesData.forEach(country => {
-        countriesMap[country.country_id] = country.country_name;
-      });
-      setCountries(countriesMap);
+      // Countries are now hardcoded in state
       
       // If user is authenticated, fetch liked vacations
       if (isAuthenticated) {
@@ -235,7 +248,9 @@ const Vacations = () => {
                                                    <div className="vacation-details">
                                          <div className="detail-item">
                        <span className="detail-label">Country:</span>
-                       <span className="detail-value country">{countries[vacation.country_id] || 'Unknown'}</span>
+                       <span className="detail-value country">
+                         {countries[vacation.country_id] || 'Unknown'}
+                       </span>
                      </div>
                      
 

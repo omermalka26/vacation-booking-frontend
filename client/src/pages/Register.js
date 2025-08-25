@@ -127,7 +127,7 @@ const Register = () => {
     <div className="register-container">
       <div className="register-card">
         <div className="register-header">
-          <h2 className="register-title">Register to System</h2>
+          <h2 className="register-title">Register</h2>
           <p className="register-subtitle">Create your account to get started</p>
         </div>
         
