@@ -1,6 +1,6 @@
 // App.js - Main component with routing
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { UserProvider, useUser } from './contexts/UserContext';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
