@@ -90,10 +90,21 @@ The backend will run on `http://localhost:5000`
 
 ### Default Admin User
 - **Email**: admin@admin.com
-- **Password**: admin123
+- **Password**: admin
+- **First Name**: Admin
+- **Last Name**: User
+- **Role**: Admin
 
 ### Regular User Registration
 Users can register with any email and password.
+
+### Admin Access
+After logging in as admin, you'll see an "Admin Dashboard" button on the home page that gives you access to:
+- View all vacations in a table format
+- Add new vacations with images
+- Edit existing vacations
+- Delete vacations
+- View like counts for each vacation
 
 ## 🎨 UI/UX Features
 
